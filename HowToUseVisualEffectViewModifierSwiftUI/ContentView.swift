@@ -9,15 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        GeometryReader(content: { geometry in
-            Text("Visual Effect")
-                .padding()
-                .background(.red)
-                .grayscale(0)
-        })
-        .background(Color.green)
-        .frame(width: 200)
-        .padding()
+        Text("Visual Effect")
+            .padding()
+            .background(.red)
+            .visualEffect { content, geometry in
+                content
+                    .grayscale(geometry.size.width >= 200 ? 1 : 0)
+            }
     }
 }
 
